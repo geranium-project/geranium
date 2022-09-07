@@ -24,7 +24,7 @@ The options for this script are the the following:
 -f <file_format>      : used to specify the file format (XML by default)
 ```
 
-## Back-end
+## Backend - Setup without Docker Compose
 
 Install Python backend using conda environment
 
@@ -33,18 +33,19 @@ $ conda create -n geranium python=3.6
 $ conda activate geranium
 $ conda install requests
 $ conda install -c conda-forge rdflib
-$ conda install -c anaconda flask
+$ conda install -c conda-forge uvicorn
+$ conda install -c conda-forge fastapi 
 $ pip install config
 $ pip install langdetect
 ```
 
-### API
-
-#### Start API
+#### Start API without Docker Compose
 While in the conda environment:
 ```
-python app.py
+uvicorn main:app --reload --host 0.0.0.0 --port 5000
 ```
+
+### API
 
 #### Get publications on a specific topic
 
@@ -110,7 +111,7 @@ http://localhost:5000/api?type=topics&lines=100000&offset=0
 ##### Example:
 http://localhost:5000/api?type=abstract&topic=http://dbpedia.org/resource/2D_computer_graphics
 
-## Frontend
+## Frontend - Setup without Docker Compose
 The following commands are written for Debian 9.9, NodeJS v.12.6.0 and should be executed in sequence.
 Skip those unnecessary for your working environment, if needed.
 
@@ -142,3 +143,29 @@ Skip those unnecessary for your working environment, if needed.
  If compiling process is successful (```Compiled successfully``` in console) a browser window will be automatically opened at the address of the local server. If not try the following address in your browser: ```localhost:8100```.
 
  To stop the development server press Ctrl-C.
+
+## Backend & Frontend - Setup with Docker Compose
+
+### Pre-requisites
+- Docker and Docker Compose must be installed on your pc.
+
+### Setup
+- Place your *.rdf file to: geranium/process/.
+
+### How to run
+1. Open your terminal application and go to the geranium/ folder.
+2. Next type 'docker-compose up -d'.
+3. Wait for the containers to be up and running.
+4. Open your web browser and go to http://localhost:80
+
+### Available endpoints
+- Geranium home: http://localhost:80
+- Backend documentation: http://localhost:5000/api/docs
+- Same backend endpoints listed above.
+
+#### Note
+- Blazegraph is used as triplestore database and it is reachable only via the Docker Compose services.
+
+- The blazegraph-service starts immediatly. Instead the backend-service and the frontend-service start only if a .rdf file exists inside the process folder. If not an error message is displayed to the terminal application.
+
+- After a new .rdf file is inserted into the process folder, it is necessary to reload the backend-service and blazegraph-service containers.

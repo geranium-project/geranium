@@ -1,0 +1,32 @@
+version: '2.2'
+
+services:
+
+  blazegraph_service:
+    build: ./blazegraph
+    container_name: blazegraph_service
+
+  backend_service:
+    build: ./process
+    command: python startup.py
+    volumes:
+      - ./process/:/app/
+    ports:
+      - 5000:5000
+    container_name: backend_service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - blazegraph_service
+  
+  frontend_service:
+    build: ./website
+    container_name: frontend_service
+    ports:
+      - 80:80
+    depends_on:
+      backend_service:
+        condition: service_healthy

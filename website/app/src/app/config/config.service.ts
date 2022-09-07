@@ -10,10 +10,10 @@ export class ConfigService {
   constructor() {
     /* Change the following URL if you want to redirect api requests to
     another domain (e.g. localhost for testing purposes) */
-    this.apiDomain = 'api.geranium.nexacenter.org';
+    this.apiDomain = 'localhost';
 
     /* Change the following port number if you want to change the
     port used to connect to the API (suggested 80 for production) */
-    this.apiPort = 443;
+    this.apiPort = 5000;
   }
 }
