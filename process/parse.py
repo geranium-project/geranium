@@ -1,6 +1,3 @@
-from flask import jsonify
-import sys
-
 def get_publications(data):
     final = {}
     for row in data:
@@ -34,7 +31,7 @@ def get_publications(data):
                 publication['co_authors'].append(co_author)
 
     final = list(final.values())
-    return jsonify(final)
+    return final
 
 
 def get_authors(data):
@@ -89,7 +86,7 @@ def get_authors(data):
                 publication['co_authors'].append(co_author)
 
     final = list(final.values())
-    return jsonify(final)
+    return final
 
 
 def get_publication_details(data):
@@ -167,7 +164,7 @@ def get_publication_details(data):
 
             
     final = list(final.values())
-    return jsonify(final)
+    return final
 
 
 def get_author_details(data):
@@ -256,7 +253,7 @@ def get_author_details(data):
 
 
     final = list(final.values())
-    return jsonify(final)
+    return final
 
 
 def get_topics(data):
@@ -269,7 +266,7 @@ def get_topics(data):
         topic['label'] = label
         final[url] = topic
     final = list(final.values())
-    return jsonify(final)
+    return final
 
 
 def get_abstract(data):
@@ -282,7 +279,7 @@ def get_abstract(data):
     else:
         final['abstract'] = abstract
     final = list(final.values())
-    return jsonify(final)
+    return final
 
 
 def set_author_data(row, author_fields):

@@ -65,7 +65,7 @@ select * where {
 } limit 1000000`;
     this.http
       .get(
-        'https://blazegraph.nexacenter.org/blazegraph/sparql?query=' +
+        'http://blazegraph_service:9999/blazegraph/sparql?query=' +
           encodeURI('{}')
       )
       .subscribe(resData => {

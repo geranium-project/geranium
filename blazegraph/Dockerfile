@@ -1,0 +1,1 @@
+FROM nawer/blazegraph:2.1.5
