@@ -156,10 +156,10 @@ Skip those unnecessary for your working environment, if needed.
 1. Open your terminal application and go to the geranium/ folder.
 2. Next type 'docker-compose up -d'.
 3. Wait for the containers to be up and running.
-4. Open your web browser and go to http://localhost:80
+4. Open your web browser and go to http://localhost:9081
 
 ### Available endpoints
-- Geranium home: http://localhost:80
+- Geranium home: http://localhost:9081
 - Backend documentation: http://localhost:5000/api/docs
 - Same backend endpoints listed above.
 
