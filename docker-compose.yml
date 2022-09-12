@@ -12,7 +12,7 @@ services:
     volumes:
       - ./process/:/app/
     ports:
-      - 5000:5000
+      - 9085:5000
     container_name: backend_service
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/api/docs"]
@@ -27,8 +27,6 @@ services:
     container_name: frontend_service
     ports:
       - 9081:80
-    volumes:
-      - ./website/nginx_config.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       backend_service:
         condition: service_healthy
