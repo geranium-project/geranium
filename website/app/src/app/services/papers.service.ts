@@ -51,7 +51,7 @@ export class PapersService {
       this.config.apiDomain +
       ':' +
       this.config.apiPort +
-      '/api?' +
+      '/api/?' +
       encodeURI(
         `type=publications&topic=${topicQuery.label}&lines=${linesPerQuery}&offset=${linesOffset}`
       );
@@ -143,7 +143,7 @@ export class PapersService {
       this.config.apiDomain +
       ':' +
       this.config.apiPort +
-      '/api?' +
+      '/api/?' +
       encodeURI(`type=publication&url=${paperURI}&lines=10000&offset=0`);
 
     console.log('GET: ' + url);

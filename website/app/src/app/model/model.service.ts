@@ -108,7 +108,7 @@ export class ModelService {
     const url =
       'https://' +
       this.config.apiDomain + ':' + this.config.apiPort +
-      '/api?' +
+      '/api/?' +
       encodeURI(`type=topics&lines=100000&offset=0`);
     return this.http.get<{ url: string; label: string }[]>(url).pipe(
       tap(result => {
@@ -139,7 +139,7 @@ export class ModelService {
     const url =
       'https://' +
       this.config.apiDomain + ':' + this.config.apiPort +
-      '/api?' +
+      '/api/?' +
       encodeURI(`type=abstract&topic=${this.searchTopic.url}`);
     return this.http.get<string>(url).pipe(
       tap(result => {
