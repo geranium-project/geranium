@@ -92,8 +92,6 @@ export class AuthorsService {
     const url =
       'https://' +
       this.config.apiDomain +
-      ':' +
-      this.config.apiPort +
       '/api?' +
       encodeURI(
         `type=authors&topic=${topicQuery.label}&lines=${linesPerQuery}&offset=${linesOffset}`
@@ -158,8 +156,6 @@ export class AuthorsService {
     const url =
       'https://' +
       this.config.apiDomain +
-      ':' +
-      this.config.apiPort +
       '/api?' +
       encodeURI(
         `type=author&topic=${topicLabel}&lines=10000&offset=0&url=${authorURI}`

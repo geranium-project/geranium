@@ -107,7 +107,7 @@ export class ModelService {
   fetchTopics() {
     const url =
       'https://' +
-      this.config.apiDomain + ':' + this.config.apiPort +
+      this.config.apiDomain +
       '/api?' +
       encodeURI(`type=topics&lines=100000&offset=0`);
     return this.http.get<{ url: string; label: string }[]>(url).pipe(
@@ -138,7 +138,7 @@ export class ModelService {
   getAbstract() {
     const url =
       'https://' +
-      this.config.apiDomain + ':' + this.config.apiPort +
+      this.config.apiDomain +
       '/api?' +
       encodeURI(`type=abstract&topic=${this.searchTopic.url}`);
     return this.http.get<string>(url).pipe(
