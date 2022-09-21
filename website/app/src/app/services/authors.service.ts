@@ -94,7 +94,7 @@ export class AuthorsService {
       this.config.apiDomain +
       ':' +
       this.config.apiPort +
-      '/api/?' +
+      '/api?' +
       encodeURI(
         `type=authors&topic=${topicQuery.label}&lines=${linesPerQuery}&offset=${linesOffset}`
       );
@@ -160,7 +160,7 @@ export class AuthorsService {
       this.config.apiDomain +
       ':' +
       this.config.apiPort +
-      '/api/?' +
+      '/api?' +
       encodeURI(
         `type=author&topic=${topicLabel}&lines=10000&offset=0&url=${authorURI}`
       );
