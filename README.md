@@ -163,6 +163,45 @@ Skip those unnecessary for your working environment, if needed.
 - Backend documentation: http://localhost:5000/api/docs
 - Same backend endpoints listed above.
 
+## Online configuration
+The online Docker version of the platform has been implemented by adding two reverse proxies (Apache).
+
+### Reverse Proxy configuration for the website
+```
+<VirtualHost *:80>
+    ServerName geranium.nexacenter.org
+    Redirect permanent / https://geranium.nexacenter.org/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName geranium.nexacenter.org
+
+    ProxyPass / http://0.0.0.0:9081/
+    ProxyPassReverse / http://0.0.0.0:9081/     
+
+    # ssl config following
+</VirtualHost>
+```
+The website is reachable via the https://geranium.nexacenter.org/.
+
+### Reverse Proxy configuration for the API
+```
+<VirtualHost *:80>
+    ServerName api.geranium.nexacenter.org
+    Redirect permanent / https://api.geranium.nexacenter.org/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName api.geranium.nexacenter.org
+
+    ProxyPass / http://0.0.0.0:9085/
+    ProxyPassReverse / http://0.0.0.0:9085/     
+
+    # ssl config following
+</VirtualHost>
+```
+The API is reachable via the https://api.geranium.nexacenter.org/ prefix.
+
 #### Note
 - Blazegraph is used as triplestore database and it is reachable only via the Docker Compose services.
 
