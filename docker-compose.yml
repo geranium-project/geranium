@@ -5,6 +5,7 @@ services:
   blazegraph_service:
     build: ./blazegraph
     container_name: blazegraph_service
+    restart: always
 
   backend_service:
     build: ./process
@@ -21,6 +22,7 @@ services:
       retries: 5
     depends_on:
       - blazegraph_service
+    restart: always
   
   frontend_service:
     build: ./website
@@ -32,3 +34,4 @@ services:
     depends_on:
       backend_service:
         condition: service_healthy
+    restart: always
